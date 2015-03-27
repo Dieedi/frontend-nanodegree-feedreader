@@ -1,17 +1,29 @@
 # What tests are done ?
 
 When the page load, tests are made to check :
+
     - In  the RSS feeds :
+    
             - the allFeeds array exists and is not empty
+            
             - each objects in allFeeds array have an Url
+            
             - each objects in allFeeds array have a name
+            
     - The menu visibility :
+    
             - at first 'body' should have the class 'menu-hidden'
+            
             - On click on menu button, the class 'menu-hidden' toggle
+            
     - The initials entries :
+    
             - are called by the loadFeed function with 0 as parameter
+            
     - New feed selection :
+    
             - compare each feeds with their previous or folowing feeds
+            
 
 
 
