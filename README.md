@@ -1,3 +1,20 @@
+# What tests are done ?
+
+When the page load, tests are made to check :
+    - In  the RSS feeds :
+            - the allFeeds array exists and is not empty
+            - each objects in allFeeds array have an Url
+            - each objects in allFeeds array have a name
+    - The menu visibility :
+            - at first 'body' should have the class 'menu-hidden'
+            - On click on menu button, the class 'menu-hidden' toggle
+    - The initials entries :
+            - are called by the loadFeed function with 0 as parameter
+    - New feed selection :
+            - compare each feeds with their previous or folowing feeds
+
+
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.

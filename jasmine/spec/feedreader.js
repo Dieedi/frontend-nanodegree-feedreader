@@ -129,62 +129,6 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    describe('New feed Selection', function() {
-        beforeEach(function(done) {
-            //  before each test call the function with done as callback
-            loadFeed(0, done);
-        });
-
-        describe('first feed', function() {
-
-            it('is loaded',function(done) {
-                loadFeed(0);
-                feed0 = $('.entry h2').first().text();
-                expect($('a').hasClass('entry-link')).toBeTruthy();
-                done();
-            });
-
-            describe('second feed', function(done) {
-                beforeEach(function(done) {
-                    loadFeed(1, done);
-                });
-
-                it('is not the same as first', function(done) {
-                    loadFeed(1);
-                    feed1 = $('.entry h2').first().text();
-                    expect(feed1).not.toEqual(feed0);
-                    done();
-                });
-
-                describe('third feed', function(done) {
-                    beforeEach(function(done) {
-                        loadFeed(2, done);
-                    });
-
-                    it('is not the same as second', function(done) {
-                        loadFeed(2);
-                        feed2 = $('.entry h2').first().text();
-                        expect(feed2).not.toEqual(feed1);
-                        done();
-                    });
-
-                    describe('fourth feed', function(done) {
-                        beforeEach(function(done) {
-                            loadFeed(3, done);
-                        });
-
-                        it('is not the same as third', function(done) {
-                            loadFeed(3);
-                            feed3 = $('.entry h2').first().text();
-                            expect(feed3).not.toEqual(feed2);
-                            done();
-                        });
-                    });
-                });
-            });
-        });
-    });
-
     var menuLength = $('.feed-list li').length;
 
     function testBegin(i) {
