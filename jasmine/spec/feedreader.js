@@ -184,4 +184,71 @@ $(function() {
             });
         });
     });
+
+    var menuLength = $('.feed-list li').length;
+
+    function testBegin(i) {
+        describe('New feed Selection', function() {
+            beforeEach(function(done) {
+                //  before each test call the function with done as callback
+                loadFeed(i, done);
+            });
+
+            describe('origin feed', function() {
+
+                it('is loaded',function(done) {
+                    loadFeed(i);
+                    feed0 = $('.entry h2').first().text();
+                    expect($('a').hasClass('entry-link')).toBeTruthy();
+                    done();
+                });
+
+                if (i < menuLength) {
+                    for (var j = i + 1; j < menuLength; j++) {
+                        compareNext(j);
+                    };
+                }
+
+                if (i >= 0) {
+                    for (var j = i - 1; j >= 0; j--) {
+                        comparePrevious(j);
+                    };
+                };
+            });
+        });
+    }
+
+    function comparePrevious(j) {
+        describe('previous feed', function(done) {
+            beforeEach(function(done) {
+                loadFeed(j, done);
+            });
+
+            it('is not the same as origin', function(done) {
+                loadFeed(j);
+                feed1 = $('.entry h2').first().text();
+                expect(feed1).not.toEqual(feed0);
+                done();
+            });
+        });
+    }
+
+    function compareNext(j) {
+        describe('next feed', function(done) {
+            beforeEach(function(done) {
+                loadFeed(j, done);
+            });
+
+            it('is not the same as origin', function(done) {
+                loadFeed(j);
+                feed1 = $('.entry h2').first().text();
+                expect(feed1).not.toEqual(feed0);
+                done();
+            });
+        });
+    }
+
+    for (var i = 0; i < menuLength; i++) {
+        testBegin(i);
+    }
 }());
